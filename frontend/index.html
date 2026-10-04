@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModelFlow AI — Enterprise Automated Machine Learning Platform</title>
+  <meta name="description" content="End-to-End Automated Machine Learning Platform for tabular data profiling, cleaning, multi-model training, diagnostics, explainability, and human-readable predictions." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="app-container">
+  
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand-section">
+      <div class="brand-title">
+        <span>⚡ ModelFlow AI</span>
+        <span class="brand-badge">PRO</span>
+      </div>
+      <div class="brand-tagline">Autonomous ML Pipeline Studio</div>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item active" data-view="dashboard">
+        <span class="nav-icon">📊</span>
+        <span>Dashboard</span>
+      </li>
+      <li class="nav-item" data-view="dataset">
+        <span class="nav-icon">📁</span>
+        <span>Dataset & Profiling</span>
+      </li>
+      <li class="nav-item" data-view="cleaning">
+        <span class="nav-icon">🧹</span>
+        <span>Data Preparation</span>
+      </li>
+      <li class="nav-item" data-view="training">
+        <span class="nav-icon">🧠</span>
+        <span>Model Training</span>
+      </li>
+      <li class="nav-item" data-view="diagnostics">
+        <span class="nav-icon">📈</span>
+        <span>Visual Diagnostics</span>
+      </li>
+      <li class="nav-item" data-view="xai">
+        <span class="nav-icon">🔬</span>
+        <span>Explainability (XAI)</span>
+      </li>
+      <li class="nav-item" data-view="prediction">
+        <span class="nav-icon">🔮</span>
+        <span>Prediction Hub</span>
+      </li>
+      <li class="nav-item" data-view="reports">
+        <span class="nav-icon">📑</span>
+        <span>ML Reports</span>
+      </li>
+      <li class="nav-item" data-view="tracker">
+        <span class="nav-icon">🕒</span>
+        <span>Experiment Tracker</span>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <span>Status: <strong style="color:#10b981;">● Online</strong></span>
+      <span>v2.4</span>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="main-wrapper">
+    
+    <!-- STICKY TOP HEADER -->
+    <header class="top-header">
+      <div class="header-title-group">
+        <h1>ModelFlow AI Studio</h1>
+        <p>Production Machine Learning & Explainability Platform</p>
+      </div>
+      <div class="header-status-pills">
+        <span class="pill-badge" id="header-dataset-badge">📁 Dataset: None</span>
+        <span class="pill-badge" id="header-target-badge">🎯 Target: None</span>
+        <span class="pill-badge" id="header-type-badge">⚙️ Type: Auto</span>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="content-body">
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 1: DASHBOARD -->
+      <!-- ==================================================================== -->
+      <section id="view-dashboard" class="view-panel active">
+        <div class="card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff;">
+          <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color:#ffffff;">
+            Welcome to ModelFlow AI ⚡
+          </h2>
+          <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 800px; line-height: 1.6;">
+            A complete end-to-end Machine Learning pipeline platform built with strict separation of concerns. Upload tabular datasets, profile distributions, execute leakage-free preprocessing, train and compare algorithms, explain predictions with SHAP & LIME, and deploy interactive inference with plain-English interpretations.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-sample-load" data-sample="housing">🏡 California Housing (Regression)</button>
+            <button class="btn btn-outline btn-sample-load" data-sample="titanic">🚢 Titanic Survival (Classification)</button>
+            <button class="btn btn-outline btn-sample-load" data-sample="churn">👤 Telco Customer Churn (Classification)</button>
+            <button class="btn btn-outline btn-sample-load" data-sample="iris">🌸 Iris Flower (Multi-Class)</button>
+          </div>
+        </div>
+
+        <!-- DASHBOARD UPLOAD DATASET CARD -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">📤 Upload & Ingest Dataset</h3>
+              <p class="card-subtitle">Upload your own CSV, Excel, or JSON dataset to start the automated ML pipeline immediately.</p>
+            </div>
+          </div>
+          
+          <div class="dropzone-container" id="dashboard-dropzone">
+            <input type="file" id="dashboard-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json" />
+            <div class="dropzone-icon">☁️</div>
+            <div class="dropzone-title">Drag & Drop your dataset here or click to browse</div>
+            <div class="dropzone-subtitle">Supports CSV (.csv), Excel (.xlsx, .xls), and JSON (.json)</div>
+            <button class="btn btn-primary" style="margin-top:0.5rem;" onclick="document.getElementById('dashboard-file-input').click()">
+              📁 Browse Files from Computer
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🚀 Complete Machine Learning Workflow</h3>
+          </div>
+          <div class="grid-3">
+            <div class="stat-box" style="cursor:pointer;" onclick="navigateTo('dataset')">
+              <div class="stat-label">Step 1</div>
+              <div class="stat-value" style="font-size:1.15rem;">📁 Data Ingestion & Profiling</div>
+              <div class="stat-sub">Automated schema discovery, statistical summaries, and distributions.</div>
+            </div>
+            <div class="stat-box" style="cursor:pointer;" onclick="navigateTo('cleaning')">
+              <div class="stat-label">Step 2</div>
+              <div class="stat-value" style="font-size:1.15rem;">🧹 Data Preparation</div>
+              <div class="stat-sub">Missing values, outlier capping, class balance & leakage audits.</div>
+            </div>
+            <div class="stat-box" style="cursor:pointer;" onclick="navigateTo('training')">
+              <div class="stat-label">Step 3</div>
+              <div class="stat-value" style="font-size:1.15rem;">🧠 Model Training & Leaderboard</div>
+              <div class="stat-sub">Train competing models, cross-validate, and export standalone code.</div>
+            </div>
+            <div class="stat-box" style="cursor:pointer;" onclick="navigateTo('diagnostics')">
+              <div class="stat-label">Step 4</div>
+              <div class="stat-value" style="font-size:1.15rem;">📈 Visual Diagnostics</div>
+              <div class="stat-sub">Confusion matrices, ROC curves, actual vs predicted, and residuals.</div>
+            </div>
+            <div class="stat-box" style="cursor:pointer;" onclick="navigateTo('xai')">
+              <div class="stat-label">Step 5</div>
+              <div class="stat-value" style="font-size:1.15rem;">🔬 Explainability (XAI)</div>
+              <div class="stat-sub">Global feature importance, SHAP beeswarms, and local LIME attributions.</div>
+            </div>
+            <div class="stat-box" style="cursor:pointer;" onclick="navigateTo('prediction')">
+              <div class="stat-label">Step 6</div>
+              <div class="stat-value" style="font-size:1.15rem;">🔮 Prediction Hub</div>
+              <div class="stat-sub">Plain-English results answering the 4 questions + batch CSV scoring.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-footer-card">
+          <span>Get started by loading a dataset or uploading your own CSV file.</span>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="dataset">Next: Dataset & Profiling ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 2: DATASET & PROFILING -->
+      <!-- ==================================================================== -->
+      <section id="view-dataset" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📁 Ingest Tabular Dataset</h3>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label class="form-label">Upload CSV / Excel / JSON Dataset:</label>
+              <input type="file" id="dataset-file-input" class="form-control" accept=".csv,.xlsx,.xls,.json" />
+            </div>
+            <div>
+              <label class="form-label">Or Load Built-in Benchmark Datasets:</label>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button class="btn btn-outline btn-sample-load" data-sample="housing">California Housing</button>
+                <button class="btn btn-outline btn-sample-load" data-sample="titanic">Titanic</button>
+                <button class="btn btn-outline btn-sample-load" data-sample="churn">Telco Churn</button>
+                <button class="btn btn-outline btn-sample-load" data-sample="iris">Iris</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profiling Summary Cards -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📊 Dataset Health & Statistical Summary</h3>
+          </div>
+          <div class="grid-4">
+            <div class="stat-box">
+              <div class="stat-label">Total Rows</div>
+              <div class="stat-value" id="stat-rows">-</div>
+              <div class="stat-sub">Data instances</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Total Columns</div>
+              <div class="stat-value" id="stat-cols">-</div>
+              <div class="stat-sub">Attributes / Features</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Missing Cells</div>
+              <div class="stat-value" id="stat-missing">-</div>
+              <div class="stat-sub">Missing data cells</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Duplicate Rows</div>
+              <div class="stat-value" id="stat-duplicates">-</div>
+              <div class="stat-sub">Identical rows</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Preview Table -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📋 Raw Dataset Preview (First 10 Rows)</h3>
+          </div>
+          <div class="table-responsive" id="dataset-preview-table">
+            <p style="padding:1rem; color:#64748b;">No dataset loaded. Upload a file or load a sample above.</p>
+          </div>
+        </div>
+
+        <!-- Column Summary Breakdown -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🔍 Column-by-Column Profiling Breakdown</h3>
+          </div>
+          <div class="table-responsive" id="col-summary-table-container">
+            <p style="padding:1rem; color:#64748b;">Load a dataset to view column profiling.</p>
+          </div>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="dashboard">⬅ Previous: Dashboard</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="cleaning">Next: Data Preparation ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 3: DATA PREPARATION & CLEANING -->
+      <!-- ==================================================================== -->
+      <section id="view-cleaning" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🎯 Target & Feature Configuration</h3>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Select Target Variable (Y):</label>
+              <select id="target-column-select" class="form-select"></select>
+            </div>
+            <div>
+              <label class="form-label">Active Training Features (X):</label>
+              <div id="feature-checklist-container" style="max-height:160px; overflow-y:auto; display:flex; flex-direction:column; gap:0.35rem;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🧹 Interactive Cleaning Studio</h3>
+          </div>
+          <div class="grid-3">
+            <div>
+              <label class="form-label">Missing Values Treatment:</label>
+              <div class="form-group">
+                <select id="clean-col-select" class="form-select"></select>
+              </div>
+              <div class="form-group">
+                <select id="clean-missing-strategy" class="form-select">
+                  <option value="median">Impute with Median (Numeric)</option>
+                  <option value="mean">Impute with Mean (Numeric)</option>
+                  <option value="mode">Impute with Mode / Most Frequent</option>
+                  <option value="drop">Drop Rows with Missing</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-full" id="btn-clean-missing">Apply Missing Imputation</button>
+            </div>
+
+            <div>
+              <label class="form-label">Deduplication & Hygiene:</label>
+              <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">Detect and remove exact duplicate records to prevent data contamination.</p>
+              <button class="btn btn-outline btn-full" id="btn-clean-duplicates">Remove Duplicate Rows</button>
+            </div>
+
+            <div>
+              <label class="form-label">Reset Pipeline:</label>
+              <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">Revert dataset back to original raw uploaded state.</p>
+              <button class="btn btn-outline btn-full" id="btn-clean-reset">Reset to Raw State</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📜 Data Cleaning Audit Trail</h3>
+          </div>
+          <div id="cleaning-log-container">
+            <p style="font-size:0.85rem; color:#64748b;">No cleaning actions executed yet.</p>
+          </div>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="dataset">⬅ Previous: Dataset & Profiling</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="training">Next: Model Training ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 4: MODEL TRAINING & COMPARISON -->
+      <!-- ==================================================================== -->
+      <section id="view-training" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">⚙️ Training Pipeline Hyperparameters</h3>
+          </div>
+          <div class="grid-3">
+            <div class="form-group">
+              <label class="form-label">Test Split Ratio:</label>
+              <select id="train-test-size" class="form-select">
+                <option value="0.2">80% Train / 20% Test</option>
+                <option value="0.25">75% Train / 25% Test</option>
+                <option value="0.3">70% Train / 30% Test</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Numeric Feature Scaler:</label>
+              <select id="train-scaler" class="form-select">
+                <option value="standard">StandardScaler (Zero Mean, Unit Var)</option>
+                <option value="robust">RobustScaler (Outlier-Resistant)</option>
+                <option value="minmax">MinMaxScaler (0 to 1)</option>
+                <option value="none">No Scaling</option>
+              </select>
+            </div>
+            <div class="form-group" style="display:flex; flex-direction:column; justify-content:center;">
+              <label class="form-label">Hyperparameter Tuning:</label>
+              <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.88rem; cursor:pointer;">
+                <input type="checkbox" id="train-tune-toggle" />
+                <span>Auto-Tune Top Model via GridSearchCV</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-full" id="btn-start-training" style="margin-top:0.75rem;">
+            🚀 Train & Compare Models
+          </button>
+        </div>
+
+        <div id="best-model-banner-container"></div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🏆 Model Comparison Leaderboard</h3>
+          </div>
+          <div class="table-responsive" id="leaderboard-table-container">
+            <p style="padding:1rem; color:#64748b;">Train models above to populate the comparison leaderboard.</p>
+          </div>
+        </div>
+
+        <!-- Standalone Reproducible Code Box -->
+        <div class="card" id="standalone-code-section" style="display:none;">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">💻 Full Complete Standalone Code (Best Model)</h3>
+              <p class="card-subtitle">Standalone Python code reproducing data loading, cleaning, preprocessing, training, evaluation, saving, and inference.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <button class="btn btn-outline" id="btn-copy-code">📋 Copy Code</button>
+              <button class="btn btn-primary" id="btn-download-code">📥 Download .py Script</button>
+            </div>
+          </div>
+          <pre class="code-box"><code id="standalone-code-view"># Python code will appear here...</code></pre>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="cleaning">⬅ Previous: Data Preparation</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="diagnostics">Next: Visual Diagnostics ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 5: VISUAL DIAGNOSTICS -->
+      <!-- ==================================================================== -->
+      <section id="view-diagnostics" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📊 Visual Performance & Residual Diagnostics</h3>
+          </div>
+          <div id="diagnostics-charts-container">
+            <p class="text-muted">Train a model in Step 4 to generate diagnostic evaluation plots.</p>
+          </div>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="training">⬅ Previous: Model Training</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="xai">Next: Explainability (XAI) ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 6: EXPLAINABILITY (XAI) -->
+      <!-- ==================================================================== -->
+      <section id="view-xai" class="view-panel">
+        <div id="xai-content-container">
+          <p class="text-muted">Train a model first to compute feature attributions, SHAP global impact, and LIME explanations.</p>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="diagnostics">⬅ Previous: Visual Diagnostics</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="prediction">Next: Prediction Hub ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 7: PREDICTION HUB -->
+      <!-- ==================================================================== -->
+      <section id="view-prediction" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title" id="prediction-section-title">🔮 Prediction Hub</h3>
+              <p class="card-subtitle">Generate single-instance predictions or batch inferences with plain-English interpretations.</p>
+            </div>
+          </div>
+
+          <div id="prediction-inputs-form">
+            <p style="color:#64748b;">Train a model first to generate the input form.</p>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-full" id="btn-predict-single" style="margin-top:1.25rem;">
+            ⚡ Generate Prediction
+          </button>
+        </div>
+
+        <!-- HERO PREDICTION RESULT CARD -->
+        <div id="prediction-output-card-container"></div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="xai">⬅ Previous: Explainability</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="reports">Next: ML Reports ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 8: ML REPORTS -->
+      <!-- ==================================================================== -->
+      <section id="view-reports" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📑 Automated ML Analysis Report Generator</h3>
+          </div>
+          <p style="color:#475569; margin-bottom:1.5rem; font-size:0.95rem; line-height:1.6;">
+            Export a comprehensive, publication-ready ML documentation report containing the dataset profile, cleaning audit trail, model comparison leaderboard, diagnostic charts, top feature attributions, and pipeline metadata.
+          </p>
+          <button class="btn btn-primary btn-lg" id="btn-generate-report">
+            📥 Generate & Download Complete HTML ML Report
+          </button>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="prediction">⬅ Previous: Prediction Hub</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="tracker">Next: Experiment Tracker ➔</button>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- VIEW 9: EXPERIMENT TRACKER -->
+      <!-- ==================================================================== -->
+      <section id="view-tracker" class="view-panel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🕒 Logged Machine Learning Experiment Runs</h3>
+          </div>
+          <div class="table-responsive" id="tracker-table-container">
+            <p style="padding:1rem; color:#64748b;">No experiment runs logged yet.</p>
+          </div>
+        </div>
+
+        <div class="nav-footer-card">
+          <button class="btn btn-outline btn-nav" data-target="reports">⬅ Previous: ML Reports</button>
+          <button class="btn btn-primary nav-btn-highlight btn-nav" data-target="dashboard">Return to Dashboard ➔</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
